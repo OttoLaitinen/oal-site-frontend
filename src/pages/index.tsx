@@ -11,13 +11,13 @@ const IndexPage: React.FC<IndexPageProps> = props => {
   )
   console.log(props.path)
   return (
-    <Layout>
+    <>
       <h1>{data.strapiHome.title}</h1>
       <p>{data.strapiHome.bio}</p>
       {profilePicture && (
         <GatsbyImage image={profilePicture} alt={"Pic of me lol"} />
       )}
-    </Layout>
+    </>
   )
 }
 
