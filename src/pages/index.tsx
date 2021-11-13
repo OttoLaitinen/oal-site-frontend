@@ -1,9 +1,9 @@
 import * as React from "react"
 import { graphql, PageProps, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image"
-
-import Layout from "../components/layout"
 import styled from "styled-components"
+
+import StyledMarkdown from "../components/StyledMarkdown"
 
 const IndexPage: React.FC<IndexPageProps> = props => {
   const { data } = props
@@ -18,7 +18,8 @@ const IndexPage: React.FC<IndexPageProps> = props => {
       )}
       <div>
         <h1>{data.strapiHome.title}</h1>
-        <p>{data.strapiHome.bio}</p>
+
+        <StyledMarkdown content={data.strapiHome.bio} />
       </div>
     </AboutGrid>
   )
@@ -28,8 +29,9 @@ const AboutGrid = styled.section`
   display: grid;
   grid-template-columns: [picture-start] 1fr [text-start] ${props =>
       props.theme.size.textContentWidth} [text-end];
-  max-width: 55rem;
-  column-gap: ${props => props.theme.spacing.large};
+  max-width: 60rem;
+  column-gap: ${props => props.theme.spacing.veryLarge};
+  align-items: center;
   margin: 0 auto;
 `
 

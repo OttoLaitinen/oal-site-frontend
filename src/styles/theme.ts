@@ -106,6 +106,11 @@ export const GlobalStyle = createGlobalStyle`
   h3 {
     ${theme.typography.title3}
   }
+  p {
+    :not(:last-child) {
+      margin-bottom: ${theme.spacing.small}
+     }
+  }
 `
 export type Theme = typeof theme
 export type Typography = keyof Theme["typography"]
