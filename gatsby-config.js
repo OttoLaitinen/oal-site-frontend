@@ -4,6 +4,16 @@ require("dotenv").config({
 
 module.exports = {
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `quicksand\:300, 400,400i, 500,600, 700`,
+          `karla\:200,300,400,400i, 500, 600, 700, 800`,
+        ],
+        display: "swap",
+      },
+    },
     "gatsby-plugin-react-helmet",
     {
       resolve: `gatsby-source-filesystem`,
