@@ -14,7 +14,7 @@ const IndexPage: React.FC<IndexPageProps> = props => {
   return (
     <AboutGrid>
       {profilePicture && (
-        <GatsbyImage image={profilePicture} alt={"Pic of me lol"} />
+        <ProfilePicture image={profilePicture} alt={"Pic of me lol"} />
       )}
       <div>
         <h1>{data.strapiHome.title}</h1>
@@ -31,6 +31,15 @@ const AboutGrid = styled.section`
   max-width: 55rem;
   column-gap: ${props => props.theme.spacing.large};
   margin: 0 auto;
+`
+
+const ProfilePicture = styled(GatsbyImage)`
+  border-radius: 27% 73% 48% 52% / 37% 31% 69% 63%;
+  transition: border-radius 200ms;
+
+  :hover {
+    border-radius: 82% 18% 86% 14% / 37% 69% 31% 63%;
+  }
 `
 
 interface IndexPageProps extends PageProps {

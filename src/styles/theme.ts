@@ -100,6 +100,12 @@ export const GlobalStyle = createGlobalStyle`
   h1 {
     ${theme.typography.title1}
   }
+  h2 {
+    ${theme.typography.title2}
+  }
+  h3 {
+    ${theme.typography.title3}
+  }
 `
 export type Theme = typeof theme
 export type Typography = keyof Theme["typography"]
