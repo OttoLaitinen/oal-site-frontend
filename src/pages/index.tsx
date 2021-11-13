@@ -3,6 +3,7 @@ import { graphql, PageProps, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
+import styled from "styled-components"
 
 const IndexPage: React.FC<IndexPageProps> = props => {
   const { data } = props
@@ -11,15 +12,26 @@ const IndexPage: React.FC<IndexPageProps> = props => {
   )
   console.log(props.path)
   return (
-    <>
-      <h1>{data.strapiHome.title}</h1>
-      <p>{data.strapiHome.bio}</p>
+    <AboutGrid>
       {profilePicture && (
         <GatsbyImage image={profilePicture} alt={"Pic of me lol"} />
       )}
-    </>
+      <div>
+        <h1>{data.strapiHome.title}</h1>
+        <p>{data.strapiHome.bio}</p>
+      </div>
+    </AboutGrid>
   )
 }
+
+const AboutGrid = styled.section`
+  display: grid;
+  grid-template-columns: [picture-start] 1fr [text-start] ${props =>
+      props.theme.size.textContentWidth} [text-end];
+  max-width: 50rem;
+  column-gap: ${props => props.theme.spacing.large};
+  margin: 0 auto;
+`
 
 interface IndexPageProps extends PageProps {
   data: {
