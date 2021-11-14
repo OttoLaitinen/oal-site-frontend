@@ -2,6 +2,7 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
+import TopBar from "./TopBar"
 
 const Layout: React.FC = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -17,8 +18,12 @@ const Layout: React.FC = ({ children }) => {
   return (
     <>
       <LayoutGrid>
-        <TopWrapper>Placeholder</TopWrapper>
+        <TopWrapper>
+          <TopBar />
+        </TopWrapper>
+
         <ContentWrapper>{children}</ContentWrapper>
+
         <FooterWrapper>© {new Date().getFullYear()}</FooterWrapper>
       </LayoutGrid>
     </>
@@ -27,11 +32,13 @@ const Layout: React.FC = ({ children }) => {
 
 const LayoutGrid = styled.div`
   display: grid;
-  grid-template-rows: [top-start] 4rem [content-start] 1fr [footer-start] 8rem [footer-end];
+  grid-template-rows: [top-start] 8rem [content-start] 1fr [footer-start] 8rem [footer-end];
+  min-height: 100vh;
 `
-const TopWrapper = styled.section`
+const TopWrapper = styled.header`
   grid-row-start: top-start;
   grid-row-end: content-start;
+  display: grid;
 `
 
 const ContentWrapper = styled.main`

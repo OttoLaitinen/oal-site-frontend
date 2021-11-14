@@ -96,6 +96,9 @@ export const GlobalStyle = createGlobalStyle`
     letter-spacing: 0;
     background-color: ${theme.color.primaryLightest};
     ${theme.typography.body}
+
+    min-height: 100vh;
+    padding: 0;
   }
   h1 {
     ${theme.typography.title1}
