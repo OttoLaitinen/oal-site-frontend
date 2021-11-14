@@ -1,14 +1,20 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, PageProps } from "gatsby"
 import styled from "styled-components"
 import TopBar from "./TopBar"
+import { ImageDataLike } from "gatsby-plugin-image"
+import Footer from "./Footer"
 
 const Layout: React.FC = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
+  const data: LayoutProps = useStaticQuery(graphql`
+    query LayoutQuery {
+      strapiGlobal {
+        contactEmail
+        siteName
+        siteLanguage
+        socialNetworks {
+          url
           title
         }
       }
@@ -24,7 +30,9 @@ const Layout: React.FC = ({ children }) => {
 
         <ContentWrapper>{children}</ContentWrapper>
 
-        <FooterWrapper>© {new Date().getFullYear()}</FooterWrapper>
+        <FooterWrapper>
+          <Footer />
+        </FooterWrapper>
       </LayoutGrid>
     </>
   )
@@ -53,6 +61,20 @@ const FooterWrapper = styled.footer`
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+}
+
+interface LayoutProps extends PageProps {
+  data: {
+    strapiGlobal: {
+      siteName: string
+      contactEmail: string
+      siteLanguage: string
+      socialNetworks: {
+        title: string
+        url: string
+      }
+    }
+  }
 }
 
 export default Layout

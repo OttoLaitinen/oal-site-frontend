@@ -30,7 +30,7 @@ const TopBarContent = styled.div`
   display: grid;
   grid-template-columns: [logo-start] 4rem [title-start] 1fr [title-end];
   justify-items: center;
-  align-items: center;
+  align-items: baseline;
   column-gap: ${props => props.theme.spacing.small};
 `
 

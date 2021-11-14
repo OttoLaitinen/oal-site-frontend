@@ -7,6 +7,7 @@ const fontNames = {
 }
 
 const theme = {
+  borderRadius: "1rem",
   color: {
     primary: "#9C2F2F",
     primaryLight: "#FFEBEB",
@@ -108,6 +109,9 @@ export const GlobalStyle = createGlobalStyle`
   }
   h3 {
     ${theme.typography.title3}
+  }
+  h4 {
+    ${theme.typography.subtitle}
   }
   p {
     :not(:last-child) {
