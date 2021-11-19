@@ -29,7 +29,7 @@ const AboutGrid = styled.section`
   display: grid;
   grid-template-columns: [picture-start] 1fr [text-start] ${props =>
       props.theme.size.textContentWidth} [text-end];
-  max-width: 60rem;
+  max-width: ${props => props.theme.contentMaxWidth};
   column-gap: ${props => props.theme.spacing.veryLarge};
   align-items: center;
   margin: 0 auto;

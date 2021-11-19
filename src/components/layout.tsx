@@ -23,11 +23,9 @@ const Layout: React.FC = ({ children }) => {
 
   return (
     <>
-      <LayoutGrid>
-        <TopWrapper>
-          <TopBar />
-        </TopWrapper>
+      <TopBar />
 
+      <LayoutGrid>
         <ContentWrapper>{children}</ContentWrapper>
 
         <FooterWrapper>
@@ -40,13 +38,9 @@ const Layout: React.FC = ({ children }) => {
 
 const LayoutGrid = styled.div`
   display: grid;
-  grid-template-rows: [top-start] 8rem [content-start] 1fr [footer-start] 8rem [footer-end];
+  grid-template-rows: [content-start] 1fr [footer-start] auto [footer-end];
+
   min-height: 100vh;
-`
-const TopWrapper = styled.header`
-  grid-row-start: top-start;
-  grid-row-end: content-start;
-  display: grid;
 `
 
 const ContentWrapper = styled.main`

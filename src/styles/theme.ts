@@ -8,10 +8,11 @@ const fontNames = {
 
 const theme = {
   borderRadius: "1rem",
+  contentMaxWidth: "60rem",
   color: {
-    primary: "#9C2F2F",
-    primaryLight: "#FFEBEB",
-    primaryLightest: "#FFF5F5",
+    primary: "#20306A",
+    primaryLight: "#E6EBFF",
+    primaryLightest: "#FAFBFF",
     white: "white",
     black: "black",
   },

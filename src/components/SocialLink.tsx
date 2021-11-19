@@ -32,7 +32,7 @@ const SocialLinkButton = styled.a`
 
   transition: transform 200ms;
   :hover {
-    transform: rotate(33deg);
+    transform: rotate(-22deg);
   }
 `
 
