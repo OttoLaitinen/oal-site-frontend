@@ -9,7 +9,7 @@ const fontNames = {
 const theme = {
   constants: {
     borderRadius: "1rem",
-    contentMaxWidth: "70rem",
+    contentMaxWidth: "min(70rem, 90vw)",
     topBarHeight: "4rem",
   },
   borderRadius: "1rem",

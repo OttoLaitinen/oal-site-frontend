@@ -28,10 +28,8 @@ const TopBarGrid = styled.header`
 
   display: grid;
   grid-template-columns:
-    [left-start] 1fr [middle-start] min(
-      100vw,
-      ${props => props.theme.contentMaxWidth}
-    )
+    [left-start] 1fr [middle-start] ${props =>
+      props.theme.constants.contentMaxWidth}
     [right-start] 1fr [right-end];
 
   grid-template-rows: 1fr;

@@ -16,13 +16,13 @@ const IndexPage: React.FC<IndexPageProps> = props => {
     <AboutGrid>
       <LanderSection>
         <LanderSectionLeftColumn>
-          <h1>
+          <PageTitle>
             Hello there! I am Otto.
             <br />
             I design and develop
             <br />
             software products.
-          </h1>
+          </PageTitle>
           <SocialLinksList />
         </LanderSectionLeftColumn>
 
@@ -37,10 +37,8 @@ const IndexPage: React.FC<IndexPageProps> = props => {
 const AboutGrid = styled.div`
   display: grid;
   grid-template-columns:
-    [left-start] 1fr [middle-start] min(
-      100vw,
-      ${props => props.theme.contentMaxWidth}
-    )
+    [left-start] 1fr [middle-start]
+    ${props => props.theme.constants.contentMaxWidth}
     [right-start] 1fr [right-end];
 `
 const LanderSection = styled.section`
@@ -68,6 +66,9 @@ const ProfilePicture = styled(GatsbyImage)`
   clip-path: polygon(32% 0, 80% 0, 80% 100%, 0 100%); */
   /* -webkit-clip-path: url();
   clip-path: url(); */
+`
+const PageTitle = styled.h1`
+  font-size: min(3rem, 4vw);
 `
 
 interface IndexPageProps extends PageProps {
