@@ -38,14 +38,14 @@ const Layout: React.FC = ({ children }) => {
 
 const LayoutGrid = styled.div`
   display: grid;
-  grid-template-rows: [content-start] 1fr [footer-start] auto [footer-end];
-
-  min-height: 100vh;
+  grid-template-rows: [content-start] 1fr [footer-start] 8rem [footer-end];
+  min-height: calc(100vh - ${props => props.theme.constants.topBarHeight});
 `
 
 const ContentWrapper = styled.main`
   grid-row-start: content-start;
   grid-row-end: footer-start;
+  padding-bottom: ${props => props.theme.spacing.veryLarge};
 `
 
 const FooterWrapper = styled.footer`

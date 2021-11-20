@@ -8,7 +8,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `quicksand\:300, 400,400i, 500,600, 700`,
+          `quicksand\:300, 400,400i, 500,600, 700, 800, 900`,
           `karla\:200,300,400,400i, 500, 600, 700, 800`,
         ],
         display: "swap",

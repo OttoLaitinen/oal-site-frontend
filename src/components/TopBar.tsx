@@ -20,8 +20,11 @@ const TopBarGrid = styled.header`
   position: sticky;
   top: 0;
   background-color: ${props => props.theme.color.primaryLightest};
+  backdrop-filter: blur(8px);
+
   z-index: 1000;
   width: 100%;
+  height: ${props => props.theme.constants.topBarHeight};
 
   display: grid;
   grid-template-columns:
@@ -41,10 +44,8 @@ const TopBarContent = styled.div`
   display: grid;
   grid-template-columns: [logo-start] 4rem [title-start] 1fr [title-end];
   justify-items: left;
-  align-items: baseline;
+  align-items: center;
   column-gap: ${props => props.theme.spacing.small};
-
-  padding: ${props => props.theme.spacing.regular};
 `
 
 const StyledLogo = styled(LogoWithText)`

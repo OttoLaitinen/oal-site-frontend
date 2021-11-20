@@ -1,0 +1,15 @@
+<!-- <svg width="441" height="496" viewBox="0 0 441 496" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <clipPath id="svgPath">
+            <clip d="M177.635 10.3094C179.997 4.10251 185.947 0 192.589 0H424.807C433.643 0 440.807 7.16344 440.807 16V480C440.807 488.837 433.643 496 424.807 496H16.0148C4.81048 496 -2.92403 484.781 1.06095 474.309L177.635 10.3094Z" fill="#C4C4C4"/>
+        </clipPath>
+    </defs>
+</svg> -->
+
+<svg height="0" width="0">
+    <defs>
+        <clipPath id="svgTextPath">
+            <text x="0" y="300" textLength="800px" lengthAdjust="spacing" font-family="Vollkorn" font-size="230px" font-weight="700" font-style="italic"> Blossom </text>
+        </clipPath>
+    </defs>
+</svg>

@@ -7,8 +7,14 @@ const fontNames = {
 }
 
 const theme = {
+  constants: {
+    borderRadius: "1rem",
+    contentMaxWidth: "70rem",
+    topBarHeight: "4rem",
+  },
   borderRadius: "1rem",
-  contentMaxWidth: "60rem",
+  contentMaxWidth: "70rem",
+
   color: {
     primary: "#20306A",
     primaryLight: "#E6EBFF",
@@ -92,6 +98,7 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: ${theme.color.black};
+    height: 100%;
   }
   body {
     line-height: 1.5;
@@ -99,7 +106,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${theme.color.primaryLightest};
     ${theme.typography.body}
 
-    min-height: 100vh;
+    min-height: 100%;
     padding: 0;
   }
   h1 {

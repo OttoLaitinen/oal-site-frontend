@@ -4,6 +4,7 @@ import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image"
 import styled from "styled-components"
 
 import StyledMarkdown from "../components/StyledMarkdown"
+import SocialLinksList from "../components/SocialLinksList"
 
 const IndexPage: React.FC<IndexPageProps> = props => {
   const { data } = props
@@ -13,35 +14,60 @@ const IndexPage: React.FC<IndexPageProps> = props => {
   console.log(props.path)
   return (
     <AboutGrid>
-      {profilePicture && (
-        <ProfilePicture image={profilePicture} alt={"Pic of me lol"} />
-      )}
-      <div>
-        <h1>{data.strapiHome.title}</h1>
+      <LanderSection>
+        <LanderSectionLeftColumn>
+          <h1>
+            Hello there! I am Otto.
+            <br />
+            I design and develop
+            <br />
+            software products.
+          </h1>
+          <SocialLinksList />
+        </LanderSectionLeftColumn>
 
-        <StyledMarkdown content={data.strapiHome.bio} />
-      </div>
+        {profilePicture && (
+          <ProfilePicture image={profilePicture} alt={"Pic of me lol"} />
+        )}
+      </LanderSection>
     </AboutGrid>
   )
 }
 
-const AboutGrid = styled.section`
+const AboutGrid = styled.div`
   display: grid;
-  grid-template-columns: [picture-start] 1fr [text-start] ${props =>
-      props.theme.size.textContentWidth} [text-end];
-  max-width: ${props => props.theme.contentMaxWidth};
+  grid-template-columns:
+    [left-start] 1fr [middle-start] min(
+      100vw,
+      ${props => props.theme.contentMaxWidth}
+    )
+    [right-start] 1fr [right-end];
+`
+const LanderSection = styled.section`
+  grid-column-start: middle-start;
+  grid-column-end: right-start;
+
+  display: grid;
+  grid-template-columns: [title-start] 0.55fr [picture-start] 0.45fr [picture-end];
   column-gap: ${props => props.theme.spacing.veryLarge};
+  justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
+`
+const LanderSectionLeftColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+
+  gap: ${props => props.theme.spacing.large};
 `
 
 const ProfilePicture = styled(GatsbyImage)`
-  border-radius: 27% 73% 48% 52% / 37% 31% 69% 63%;
-  transition: border-radius 200ms;
-
-  :hover {
-    border-radius: 82% 18% 86% 14% / 37% 69% 31% 63%;
-  }
+  border-radius: ${props => props.theme.borderRadius};
+  aspect-ratio: 4 / 5;
+  /* -webkit-clip-path: polygon(32% 0, 80% 0, 80% 100%, 0 100%);
+  clip-path: polygon(32% 0, 80% 0, 80% 100%, 0 100%); */
+  /* -webkit-clip-path: url();
+  clip-path: url(); */
 `
 
 interface IndexPageProps extends PageProps {
@@ -72,7 +98,7 @@ export const pageQuery = graphql`
       profilePicture {
         localFile {
           childImageSharp {
-            gatsbyImageData(width: 660)
+            gatsbyImageData(width: 1800)
           }
         }
       }
