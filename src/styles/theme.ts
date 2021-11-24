@@ -1,16 +1,34 @@
-import { createGlobalStyle, CSSObject } from "styled-components"
-import reset from "styled-reset"
+import { Global, css } from "@emotion/react"
+import emotionReset from "emotion-reset"
+
+const rem = (pixels: number) => `${pixels / 16}rem`
 
 const fontNames = {
   regular: "Karla",
   title: "Quicksand",
 }
 
+const breakpoints = {
+  phone: 767,
+  tablet: 1023,
+  desktop: 1800,
+}
+
+const media = {
+  phone: `@media (max-width: ${rem(breakpoints.phone)})`,
+  tabletDown: `@media (max-width: ${rem(breakpoints.tablet)})`,
+  desktopDown: `@media (max-width: ${rem(breakpoints.desktop)})`,
+}
+
 const theme = {
+  rem,
+  media,
+  breakpoints,
   constants: {
     borderRadius: "1rem",
-    contentMaxWidth: "min(70rem, 90vw)",
+    contentMaxWidth: "min(64rem, 100vw)", //TODO: korjaa 100vw
     topBarHeight: "4rem",
+    textContentWidth: "70ch",
   },
   borderRadius: "1rem",
   contentMaxWidth: "70rem",
@@ -23,57 +41,54 @@ const theme = {
     black: "black",
   },
   fonts: {
-    regular: fontNames.regular,
-    title: fontNames.title,
+    regular: "Karla",
+    title: "Quicksand",
   },
   typography: {
-    title1: {
-      fontFamily: fontNames.title,
-      fontSize: "3rem",
-      fontWeight: 700,
-    } as CSSObject,
-    title2: {
-      fontFamily: fontNames.title,
-      fontSize: "2rem",
-      fontWeight: 700,
-    } as CSSObject,
-    title3: {
-      fontFamily: fontNames.title,
-      fontSize: "1.5rem",
-      fontWeight: 700,
-    } as CSSObject,
-    subtitle: {
-      fontFamily: fontNames.title,
-      fontSize: "1rem",
-      fontWeight: 700,
-    } as CSSObject,
-    body: {
-      fontFamily: fontNames.regular,
-      fontSize: "1.125rem",
-      fontWeight: 400,
-    } as CSSObject,
-    bodyLarge: {
-      fontFamily: fontNames.regular,
-      fontSize: "1.25rem",
-      fontWeight: 400,
-    } as CSSObject,
-    bodySmall: {
-      fontFamily: fontNames.regular,
-      fontSize: "1rem",
-      fontWeight: 400,
-    } as CSSObject,
-    overline: {
-      fontFamily: fontNames.regular,
-      fontSize: "0.75rem",
-      textTransform: "uppercase",
-      fontWeight: 500,
-      letterSpacing: 0.8,
-    } as CSSObject,
-    caption: {
-      fontFamily: fontNames.regular,
-      fontSize: "0.75rem",
-      fontWeight: 400,
-    } as CSSObject,
+    title1: css`
+      font-family: "Quicksand";
+      font-size: 3rem;
+      font-weight: 700;
+
+      ${media.tabletDown} {
+        font-size: min(2rem, 8vw);
+      }
+    `,
+    title2: css`
+      font-family: "Quicksand";
+      font-size: 2rem;
+      font-weight: 700;
+    `,
+    title3: css`
+      font-family: "Quicksand";
+      font-size: 1.5rem;
+      font-weight: 700;
+    `,
+    subtitle: css`
+      font-family: "Quicksand";
+      font-size: 1.25rem;
+      font-weight: 700;
+    `,
+    body: css`
+      font-family: "Karla";
+      font-size: 1.125rem;
+      font-weight: 400;
+    `,
+    bodyLarge: css`
+      font-family: "Karla";
+      font-size: 1.25rem;
+      font-weight: 400;
+    `,
+    bodySmall: css`
+      font-family: "Karla";
+      font-size: 1rem;
+      font-weight: 400;
+    `,
+    caption: css`
+      font-family: "Karla";
+      font-size: 1rem;
+      font-weight: 400;
+    `,
   },
   spacing: {
     verySmall: "0.25rem",
@@ -82,13 +97,12 @@ const theme = {
     large: "2rem",
     veryLarge: "4rem",
   },
-  size: {
-    textContentWidth: "57ch",
-  },
 }
 
-export const GlobalStyle = createGlobalStyle`
-  ${reset}
+console.log(theme.typography.body.styles)
+
+export const GlobalStyle = css`
+  ${emotionReset}
 
   *, *:before, *:after {
     box-sizing: border-box;
@@ -96,38 +110,34 @@ export const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     scroll-behavior: smooth;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: ${theme.color.black};
     height: 100%;
   }
   body {
-    line-height: 1.5;
+    line-height: 1.75;
     letter-spacing: 0;
     background-color: ${theme.color.primaryLightest};
-    ${theme.typography.body}
+    ${theme.typography.body};
 
     min-height: 100%;
-    padding: 0;
   }
+
   h1 {
-    ${theme.typography.title1}
+    ${theme.typography.title1};
   }
   h2 {
-    ${theme.typography.title2}
+    ${theme.typography.title2};
   }
   h3 {
-    ${theme.typography.title3}
+    ${theme.typography.title3};
   }
   h4 {
-    ${theme.typography.subtitle}
-  }
-  p {
-    :not(:last-child) {
-      margin-bottom: ${theme.spacing.small}
-     }
+    ${theme.typography.subtitle};
   }
 `
 export type Theme = typeof theme
 export type Typography = keyof Theme["typography"]
+export type Breakpoint = keyof Theme["media"]
 
 export default theme

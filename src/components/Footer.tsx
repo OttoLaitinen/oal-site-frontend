@@ -1,12 +1,7 @@
 import * as React from "react"
-import styled from "styled-components"
+import styled from "@emotion/styled"
 
-import StyledMarkdown from "./StyledMarkdown"
-import GitHubIcon from "../assets/github.inline.svg"
-import InstagramIcon from "../assets/instagram.inline.svg"
-import LinkedInIcon from "../assets/linkedin.inline.svg"
-import SocialLink from "./SocialLink"
-import SocialLinksList from "./SocialLinksList"
+import SocialLinksList from "./common/SocialLinksList"
 
 const Footer: React.FC = () => {
   return (

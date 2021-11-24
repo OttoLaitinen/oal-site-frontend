@@ -5,13 +5,20 @@ require("dotenv").config({
 module.exports = {
   plugins: [
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        fonts: [
-          `quicksand\:300, 400,400i, 500,600, 700, 800, 900`,
-          `karla\:200,300,400,400i, 500, 600, 700, 800`,
-        ],
-        display: "swap",
+        fonts: {
+          google2: [
+            {
+              family: "Quicksand",
+              axes: "wght@700",
+            },
+            {
+              family: "Karla",
+              axes: "ital,wght@0,400;0,500;1,400;1,500",
+            },
+          ],
+        },
       },
     },
     {
@@ -55,6 +62,16 @@ module.exports = {
       },
     },
     "gatsby-plugin-offline",
-    "gatsby-plugin-styled-components",
+    // {
+    //   resolve: `gatsby-plugin-emotion`,
+    //   options: {
+    //     // Accepts the following options, all of which are defined by `@emotion/babel-plugin` plugin.
+    //     // The values for each key in this example are the defaults the plugin uses.
+    //     sourceMap: true,
+    //     autoLabel: "dev-only",
+    //     labelFormat: `[local]`,
+    //     cssPropOptimization: true,
+    //   },
+    // },
   ],
 }

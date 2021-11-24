@@ -1,21 +1,25 @@
 import * as React from "react"
 import { graphql, PageProps, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image"
-import styled from "styled-components"
+import styled from "@emotion/styled"
 
-import StyledMarkdown from "../components/StyledMarkdown"
-import SocialLinksList from "../components/SocialLinksList"
+import StyledMarkdown from "../components/common/StyledMarkdown"
+import SocialLinksList from "../components/common/SocialLinksList"
+import useWindowSize from "../hooks/useWindowSize"
+import theme from "../styles/theme"
 
 const IndexPage: React.FC<IndexPageProps> = props => {
   const { data } = props
   const profilePicture = getImage(
     data.strapiHome.profilePicture.localFile.childImageSharp.gatsbyImageData
   )
-  console.log(props.path)
+  const windowSize = useWindowSize()
+  const windowWidth = windowSize.width || Infinity
+
   return (
-    <AboutGrid>
+    <OverviewGrid>
       <LanderSection>
-        <LanderSectionLeftColumn>
+        <LanderSectionTitleColumn>
           <PageTitle>
             Hello there! I am Otto.
             <br />
@@ -23,35 +27,62 @@ const IndexPage: React.FC<IndexPageProps> = props => {
             <br />
             software products.
           </PageTitle>
-          <SocialLinksList />
-        </LanderSectionLeftColumn>
+          {windowWidth > theme.breakpoints.phone && <SocialLinksList />}
+        </LanderSectionTitleColumn>
 
         {profilePicture && (
           <ProfilePicture image={profilePicture} alt={"Pic of me lol"} />
         )}
       </LanderSection>
-    </AboutGrid>
+      <AboutSection>
+        <h1>About</h1>
+        <StyledMarkdown content={data.strapiHome.bio} />
+      </AboutSection>
+    </OverviewGrid>
   )
 }
 
-const AboutGrid = styled.div`
+const OverviewGrid = styled.div`
   display: grid;
   grid-template-columns:
     [left-start] 1fr [middle-start]
     ${props => props.theme.constants.contentMaxWidth}
     [right-start] 1fr [right-end];
+  row-gap: ${props => props.theme.spacing.veryLarge};
+
+  ${props => props.theme.media.phone} {
+    row-gap: ${props => props.theme.spacing.large};
+  }
 `
 const LanderSection = styled.section`
   grid-column-start: middle-start;
   grid-column-end: right-start;
 
   display: grid;
-  grid-template-columns: [title-start] 0.55fr [picture-start] 0.45fr [picture-end];
+  grid-template-columns: [title-start] 0.58fr [picture-start] 0.42fr [picture-end];
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "title picture"
+    "title picture";
+
   column-gap: ${props => props.theme.spacing.veryLarge};
   justify-content: space-between;
   align-items: center;
+
+  padding-inline: ${props => props.theme.spacing.large};
+  ${props => props.theme.media.phone} {
+    padding-inline: ${props => props.theme.spacing.regular};
+  }
+
+  ${props => props.theme.media.phone} {
+    gap: ${props => props.theme.spacing.large} 0px;
+    grid-template-areas:
+      "picture picture"
+      "title title";
+  }
 `
-const LanderSectionLeftColumn = styled.div`
+const LanderSectionTitleColumn = styled.div`
+  grid-area: title;
   display: flex;
   flex-direction: column;
   place-content: center;
@@ -60,15 +91,42 @@ const LanderSectionLeftColumn = styled.div`
 `
 
 const ProfilePicture = styled(GatsbyImage)`
+  grid-area: picture;
   border-radius: ${props => props.theme.borderRadius};
   aspect-ratio: 4 / 5;
+
+  ${props => props.theme.media.phone} {
+    aspect-ratio: 5 / 4;
+    width: 100%;
+  }
   /* -webkit-clip-path: polygon(32% 0, 80% 0, 80% 100%, 0 100%);
   clip-path: polygon(32% 0, 80% 0, 80% 100%, 0 100%); */
   /* -webkit-clip-path: url();
   clip-path: url(); */
 `
 const PageTitle = styled.h1`
-  font-size: min(3rem, 4vw);
+  font-size: min(3rem, 4.5vw);
+
+  ${props => props.theme.media.phone} {
+    font-size: min(3rem, 8vw);
+  }
+`
+const AboutSection = styled.section`
+  grid-column-start: middle-start;
+  grid-column-end: right-start;
+
+  display: flex;
+  flex-direction: column;
+  gap: ${props => props.theme.spacing.regular};
+
+  padding-inline: ${props => props.theme.spacing.large};
+  ${props => props.theme.media.phone} {
+    padding-inline: 0;
+  }
+
+  ${props => props.theme.media.phone} {
+    padding-inline: ${props => props.theme.spacing.regular};
+  }
 `
 
 interface IndexPageProps extends PageProps {

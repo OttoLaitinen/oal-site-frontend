@@ -1,7 +1,7 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql, PageProps } from "gatsby"
-import styled from "styled-components"
+import styled from "@emotion/styled"
 import TopBar from "./TopBar"
 import { ImageDataLike } from "gatsby-plugin-image"
 import Footer from "./Footer"
@@ -45,6 +45,7 @@ const LayoutGrid = styled.div`
 const ContentWrapper = styled.main`
   grid-row-start: content-start;
   grid-row-end: footer-start;
+
   padding-bottom: ${props => props.theme.spacing.veryLarge};
 `
 

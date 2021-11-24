@@ -1,9 +1,9 @@
 import * as React from "react"
-import styled from "styled-components"
+import styled from "@emotion/styled"
 
-import GitHubIcon from "../assets/github.inline.svg"
-import InstagramIcon from "../assets/instagram.inline.svg"
-import LinkedInIcon from "../assets/linkedin.inline.svg"
+import GitHubIcon from "../../assets/github.inline.svg"
+import InstagramIcon from "../../assets/instagram.inline.svg"
+import LinkedInIcon from "../../assets/linkedin.inline.svg"
 import SocialLink from "./SocialLink"
 
 const SocialLinksList: React.FC = () => {
