@@ -39,19 +39,37 @@ const Layout: React.FC = ({ children }) => {
 const LayoutGrid = styled.div`
   display: grid;
   grid-template-rows: [content-start] 1fr [footer-start] 8rem [footer-end];
+  grid-template-areas:
+    "content"
+    "footer";
+
   min-height: calc(100vh - ${props => props.theme.constants.topBarHeight});
 `
 
 const ContentWrapper = styled.main`
-  grid-row-start: content-start;
-  grid-row-end: footer-start;
+  grid-area: content;
+  margin: 0 auto;
+
+  width: min(${props => props.theme.constants.contentMaxWidth}, 100%);
+
+  padding-inline: ${props => props.theme.spacing.large};
+  ${props => props.theme.media.phone} {
+    padding-inline: ${props => props.theme.spacing.regular};
+  }
 
   padding-bottom: ${props => props.theme.spacing.veryLarge};
 `
 
 const FooterWrapper = styled.footer`
-  grid-row-start: footer-start;
-  grid-row-end: footer-end;
+  grid-area: footer;
+  margin: 0 auto;
+
+  max-width: ${props => props.theme.constants.contentMaxWidth};
+
+  padding-inline: ${props => props.theme.spacing.large};
+  ${props => props.theme.media.phone} {
+    padding-inline: ${props => props.theme.spacing.regular};
+  }
 `
 
 Layout.propTypes = {

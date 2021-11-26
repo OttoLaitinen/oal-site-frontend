@@ -7,7 +7,7 @@ const StyledMarkdown: React.FC<{ content: string | undefined | null }> = ({
 }) => {
   return (
     <MarkdownWrapper>
-      {content && <ReactMarkdown>{content}</ReactMarkdown>}u
+      {content && <ReactMarkdown>{content}</ReactMarkdown>}
     </MarkdownWrapper>
   )
 }

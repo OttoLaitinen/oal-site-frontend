@@ -5,15 +5,17 @@ import LogoWithText from "../assets/logowithtext.inline.svg"
 
 const TopBar: React.FC = () => {
   return (
-    <TopBarFlex>
-      <TopBarNav>
-        <StyledLogo />
-      </TopBarNav>
-    </TopBarFlex>
+    <TopBarBackground>
+      <Header>
+        <TopBarNav>
+          <StyledLogo />
+        </TopBarNav>
+      </Header>
+    </TopBarBackground>
   )
 }
 
-const TopBarFlex = styled.header`
+const TopBarBackground = styled.div`
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
@@ -25,8 +27,13 @@ const TopBarFlex = styled.header`
   height: ${props => props.theme.constants.topBarHeight};
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+`
+
+const Header = styled.header`
+  margin: 0 auto;
+  width: min(${props => props.theme.constants.contentMaxWidth}, 100%);
   padding-inline: ${props => props.theme.spacing.large};
 
   ${props => props.theme.media.phone} {
@@ -36,11 +43,11 @@ const TopBarFlex = styled.header`
 
 const TopBarNav = styled.nav`
   display: flex;
+  margin: 0 auto;
+  width: 100%;
   gap: ${props => props.theme.spacing.small};
   justify-content: flex-start;
   align-items: center;
-
-  width: ${props => props.theme.constants.contentMaxWidth};
 `
 
 const StyledLogo = styled(LogoWithText)`

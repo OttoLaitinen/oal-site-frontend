@@ -26,7 +26,7 @@ const theme = {
   breakpoints,
   constants: {
     borderRadius: "1rem",
-    contentMaxWidth: "min(64rem, 100vw)", //TODO: korjaa 100vw
+    contentMaxWidth: "64rem", //TODO: korjaa 100vw
     topBarHeight: "4rem",
     textContentWidth: "70ch",
   },

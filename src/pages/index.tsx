@@ -49,10 +49,7 @@ const IndexPage: React.FC<PageProps<IndexPageQuery>> = props => {
 
 const OverviewGrid = styled.div`
   display: grid;
-  grid-template-columns:
-    [left-start] 1fr [middle-start]
-    ${props => props.theme.constants.contentMaxWidth}
-    [right-start] 1fr [right-end];
+
   row-gap: ${props => props.theme.spacing.veryLarge};
 
   ${props => props.theme.media.phone} {
@@ -60,9 +57,6 @@ const OverviewGrid = styled.div`
   }
 `
 const LanderSection = styled.section`
-  grid-column-start: middle-start;
-  grid-column-end: right-start;
-
   display: grid;
   grid-template-columns: [title-start] 0.58fr [picture-start] 0.42fr [picture-end];
   grid-template-rows: auto auto;
@@ -73,11 +67,6 @@ const LanderSection = styled.section`
   column-gap: ${props => props.theme.spacing.veryLarge};
   justify-content: space-between;
   align-items: center;
-
-  padding-inline: ${props => props.theme.spacing.large};
-  ${props => props.theme.media.phone} {
-    padding-inline: ${props => props.theme.spacing.regular};
-  }
 
   ${props => props.theme.media.phone} {
     gap: ${props => props.theme.spacing.large} 0px;
@@ -117,21 +106,9 @@ const PageTitle = styled.h1`
   }
 `
 const AboutSection = styled.section`
-  grid-column-start: middle-start;
-  grid-column-end: right-start;
-
   display: flex;
   flex-direction: column;
   gap: ${props => props.theme.spacing.regular};
-
-  padding-inline: ${props => props.theme.spacing.large};
-  ${props => props.theme.media.phone} {
-    padding-inline: 0;
-  }
-
-  ${props => props.theme.media.phone} {
-    padding-inline: ${props => props.theme.spacing.regular};
-  }
 `
 
 export const pageQuery = graphql`
