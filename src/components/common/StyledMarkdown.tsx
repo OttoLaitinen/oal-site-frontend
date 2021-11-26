@@ -2,10 +2,12 @@ import React from "react"
 import ReactMarkdown from "react-markdown"
 import styled from "@emotion/styled"
 
-const StyledMarkdown: React.FC<{ content: string }> = ({ content }) => {
+const StyledMarkdown: React.FC<{ content: string | undefined | null }> = ({
+  content,
+}) => {
   return (
     <MarkdownWrapper>
-      <ReactMarkdown>{content}</ReactMarkdown>
+      {content && <ReactMarkdown>{content}</ReactMarkdown>}u
     </MarkdownWrapper>
   )
 }

@@ -7,38 +7,43 @@ import StyledMarkdown from "../components/common/StyledMarkdown"
 import SocialLinksList from "../components/common/SocialLinksList"
 import useWindowSize from "../hooks/useWindowSize"
 import theme from "../styles/theme"
+import { IndexPageQuery } from "../../graphql-types"
+import Seo from "../components/seo"
 
-const IndexPage: React.FC<IndexPageProps> = props => {
+const IndexPage: React.FC<PageProps<IndexPageQuery>> = props => {
   const { data } = props
   const profilePicture = getImage(
-    data.strapiHome.profilePicture.localFile.childImageSharp.gatsbyImageData
+    data.strapiHome?.profilePicture?.localFile?.childImageSharp?.gatsbyImageData
   )
   const windowSize = useWindowSize()
   const windowWidth = windowSize.width || Infinity
 
   return (
-    <OverviewGrid>
-      <LanderSection>
-        <LanderSectionTitleColumn>
-          <PageTitle>
-            Hello there! I am Otto.
-            <br />
-            I design and develop
-            <br />
-            software products.
-          </PageTitle>
-          {windowWidth > theme.breakpoints.phone && <SocialLinksList />}
-        </LanderSectionTitleColumn>
+    <>
+      <Seo />
+      <OverviewGrid>
+        <LanderSection>
+          <LanderSectionTitleColumn>
+            <PageTitle>
+              Hello there! I am Otto.
+              <br />
+              I design and develop
+              <br />
+              software products.
+            </PageTitle>
+            {windowWidth > theme.breakpoints.phone && <SocialLinksList />}
+          </LanderSectionTitleColumn>
 
-        {profilePicture && (
-          <ProfilePicture image={profilePicture} alt={"Pic of me lol"} />
-        )}
-      </LanderSection>
-      <AboutSection>
-        <h1>About</h1>
-        <StyledMarkdown content={data.strapiHome.bio} />
-      </AboutSection>
-    </OverviewGrid>
+          {profilePicture && (
+            <ProfilePicture image={profilePicture} alt={"Pic of me lol"} />
+          )}
+        </LanderSection>
+        <AboutSection>
+          <h1>About</h1>
+          <StyledMarkdown content={data.strapiHome?.bio} />
+        </AboutSection>
+      </OverviewGrid>
+    </>
   )
 }
 
@@ -129,28 +134,8 @@ const AboutSection = styled.section`
   }
 `
 
-interface IndexPageProps extends PageProps {
-  data: {
-    strapiHome: {
-      title: string
-      bio: string
-      profilePicture: {
-        localFile: {
-          childImageSharp: {
-            gatsbyImageData: ImageDataLike
-          }
-        }
-      }
-      seo: {
-        title: string
-        description: string
-      }
-    }
-  }
-}
-
 export const pageQuery = graphql`
-  query IndexQuery {
+  query IndexPage {
     strapiHome {
       title
       bio

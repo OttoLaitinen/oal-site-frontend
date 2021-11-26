@@ -3,7 +3,17 @@ require("dotenv").config({
 })
 
 module.exports = {
+  siteMetadata: {
+    title: "Otto A. Laitinen",
+    author: "Otto A. Laitinen",
+    description:
+      "Hello there! I'm Otto and I design and develop software products. This is my personal website and portfolio.",
+    url: "https://www.oal.fi", // No trailing slash allowed!
+    image: "/snape.jpg", // Path to the image placed in the 'static' folder, in the project's root directory.
+    twitterUsername: "OLaitinen",
+  },
   plugins: [
+    `gatsby-plugin-graphql-codegen`,
     {
       resolve: `gatsby-plugin-webfonts`,
       options: {
@@ -52,26 +62,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "gatsby-starter-default",
-        short_name: "starter",
+        name: "Otto A. Laitinen",
+        short_name: "OAL",
         start_url: "/",
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#20306A`,
+        theme_color: `#FAFBFF`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`,
       },
     },
-    "gatsby-plugin-offline",
-    // {
-    //   resolve: `gatsby-plugin-emotion`,
-    //   options: {
-    //     // Accepts the following options, all of which are defined by `@emotion/babel-plugin` plugin.
-    //     // The values for each key in this example are the defaults the plugin uses.
-    //     sourceMap: true,
-    //     autoLabel: "dev-only",
-    //     labelFormat: `[local]`,
-    //     cssPropOptimization: true,
-    //   },
-    // },
   ],
 }
