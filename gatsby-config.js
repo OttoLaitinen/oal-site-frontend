@@ -9,7 +9,7 @@ module.exports = {
     description:
       "Hello there! I'm Otto and I design and develop software products. This is my personal website and portfolio.",
     url: "https://www.oal.fi", // No trailing slash allowed!
-    image: "/snape.jpg", // Path to the image placed in the 'static' folder, in the project's root directory.
+    image: "/social.png", // Path to the image placed in the 'static' folder, in the project's root directory.
     twitterUsername: "OLaitinen",
   },
   plugins: [

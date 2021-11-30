@@ -83,7 +83,7 @@ const Seo: React.FC<SeoProps> = ({
   ]
 
   const twitterTags: MetaTags = [
-    { name: "twitter:card", content: "summary" },
+    { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: metaTitle },
     { name: "twitter:description", content: metaDescription },
     { name: "twitter:image", content: metaImageUrl || "" },
