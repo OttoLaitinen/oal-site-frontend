@@ -33,12 +33,6 @@ interface SeoProps {
   author?: string
 }
 
-interface MetaQuery {
-  site: {
-    siteMetadata: SeoProps
-  }
-}
-
 const Seo: React.FC<SeoProps> = ({
   description,
   lang = "en",
