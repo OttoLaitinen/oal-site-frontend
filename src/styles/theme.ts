@@ -26,7 +26,7 @@ const theme = {
   breakpoints,
   constants: {
     borderRadius: "1rem",
-    contentMaxWidth: "64rem", //TODO: korjaa 100vw
+    contentMaxWidth: "64rem",
     topBarHeight: "4rem",
     textContentWidth: "70ch",
   },
@@ -84,6 +84,11 @@ const theme = {
       font-size: 1rem;
       font-weight: 400;
     `,
+    bodyTiny: css`
+      font-family: "Karla";
+      font-size: 0.625rem;
+      font-weight: 400;
+    `,
     caption: css`
       font-family: "Karla";
       font-size: 1rem;
@@ -98,8 +103,6 @@ const theme = {
     veryLarge: "4rem",
   },
 }
-
-console.log(theme.typography.body.styles)
 
 export const GlobalStyle = css`
   ${emotionReset}

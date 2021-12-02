@@ -50,7 +50,10 @@ const Seo: React.FC<SeoProps> = ({
   const metaDescription = description || siteMetadata?.description || ""
 
   const metaUrl = `${siteMetadata?.url}${pathname === "/" ? "" : pathname}`
-  const metaTitle = title || siteMetadata?.defaultTitle || ""
+  const metaTitle =
+    title !== ""
+      ? title + " | " + siteMetadata?.defaultTitle
+      : siteMetadata?.defaultTitle || ""
   const metaImageUrl = socialImage
     ? socialImage?.url
     : `${siteMetadata?.url}${siteMetadata?.image}`

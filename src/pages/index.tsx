@@ -9,6 +9,7 @@ import useWindowSize from "../hooks/useWindowSize"
 import theme from "../styles/theme"
 import { IndexPageQuery } from "../../graphql-types"
 import Seo from "../components/seo"
+import { ContentFlex } from "../components/layout"
 
 const IndexPage: React.FC<PageProps<IndexPageQuery>> = props => {
   const { data } = props
@@ -21,7 +22,7 @@ const IndexPage: React.FC<PageProps<IndexPageQuery>> = props => {
   return (
     <>
       <Seo />
-      <OverviewGrid>
+      <ContentFlex>
         <LanderSection>
           <LanderSectionTitleColumn>
             <PageTitle>
@@ -42,20 +43,11 @@ const IndexPage: React.FC<PageProps<IndexPageQuery>> = props => {
           <h1>About</h1>
           <StyledMarkdown content={data.strapiHome?.bio} />
         </AboutSection>
-      </OverviewGrid>
+      </ContentFlex>
     </>
   )
 }
 
-const OverviewGrid = styled.div`
-  display: grid;
-
-  row-gap: ${props => props.theme.spacing.veryLarge};
-
-  ${props => props.theme.media.phone} {
-    row-gap: ${props => props.theme.spacing.large};
-  }
-`
 const LanderSection = styled.section`
   display: grid;
   grid-template-columns: [title-start] 0.58fr [picture-start] 0.42fr [picture-end];
@@ -86,12 +78,13 @@ const LanderSectionTitleColumn = styled.div`
 
 const ProfilePicture = styled(GatsbyImage)`
   grid-area: picture;
-  border-radius: ${props => props.theme.borderRadius};
+  border-radius: ${props => props.theme.spacing.regular};
   aspect-ratio: 4 / 5;
 
   ${props => props.theme.media.phone} {
     aspect-ratio: 5 / 4;
     width: 100%;
+    border-radius: ${props => props.theme.spacing.small};
   }
   /* -webkit-clip-path: polygon(32% 0, 80% 0, 80% 100%, 0 100%);
   clip-path: polygon(32% 0, 80% 0, 80% 100%, 0 100%); */
@@ -119,7 +112,7 @@ export const pageQuery = graphql`
       profilePicture {
         localFile {
           childImageSharp {
-            gatsbyImageData(width: 1800)
+            gatsbyImageData
           }
         }
       }

@@ -52,7 +52,7 @@ module.exports = {
       options: {
         apiURL: process.env.API_URL || "http://localhost:1337",
         collectionTypes: ["project", "category"],
-        singleTypes: [`home`, `global`],
+        singleTypes: [`home`, `global`, `photography`],
         queryLimit: 1000,
       },
     },

@@ -60,6 +60,17 @@ const ContentWrapper = styled.main`
   padding-bottom: ${props => props.theme.spacing.veryLarge};
 `
 
+export const ContentFlex = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: ${props => props.theme.spacing.veryLarge};
+
+  ${props => props.theme.media.phone} {
+    gap: ${props => props.theme.spacing.large};
+  }
+`
+
 const FooterWrapper = styled.footer`
   grid-area: footer;
   margin: 0 auto;
