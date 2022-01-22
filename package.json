@@ -42,6 +42,7 @@
     "typescript": "^4.4.4"
   },
   "devDependencies": {
+    "@types/rebass": "^4.0.10",
     "@typescript-eslint/eslint-plugin": "4.32.0",
     "@typescript-eslint/parser": "4.32.0",
     "babel-eslint": "10.1.0",

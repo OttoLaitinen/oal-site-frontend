@@ -112,7 +112,7 @@ export const pageQuery = graphql`
       profilePicture {
         localFile {
           childImageSharp {
-            gatsbyImageData
+            gatsbyImageData(width: 1000)
           }
         }
       }
