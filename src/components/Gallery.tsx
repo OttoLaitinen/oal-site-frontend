@@ -1,10 +1,5 @@
 import React from "react"
-import {
-  GatsbyImage,
-  GatsbyImageProps,
-  getImage,
-  IGatsbyImageData,
-} from "gatsby-plugin-image"
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 import { chunk, sum } from "lodash"
 import styled from "@emotion/styled"
 
@@ -25,7 +20,6 @@ const Gallery: React.FC<GalleryProps> = ({ images, itemsPerRow = 3 }) => {
   const filteredImages = images.filter(i => i.imageData)
   // Split images into groups of the given size
   const rows = chunk(filteredImages, itemsPerRow)
-  const rowGapPercentage = 2
 
   return (
     <GalleryContainer>
@@ -34,7 +28,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, itemsPerRow = 3 }) => {
         const rowAspectRatioSum = sum(row.map(image => image.aspectRatio))
 
         return (
-          <GalleryRow>
+          <GalleryRow key={row[0].id}>
             {row.map(image => (
               <PhotoWrapper
                 key={image.id}

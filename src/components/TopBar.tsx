@@ -2,13 +2,18 @@ import * as React from "react"
 import styled from "@emotion/styled"
 
 import LogoWithText from "../assets/logowithtext.inline.svg"
+import { Link } from "gatsby"
+import LinkList from "./LinkList"
 
 const TopBar: React.FC = () => {
   return (
     <TopBarBackground>
       <Header>
         <TopBarNav>
-          <StyledLogo />
+          <LogoLinkWrapper to="/">
+            <StyledLogo />
+          </LogoLinkWrapper>
+          <LinkList />
         </TopBarNav>
       </Header>
     </TopBarBackground>
@@ -45,7 +50,7 @@ const TopBarNav = styled.nav`
   display: flex;
   margin: 0 auto;
   width: 100%;
-  gap: ${props => props.theme.spacing.small};
+  gap: ${props => props.theme.spacing.veryLarge};
   justify-content: flex-start;
   align-items: center;
 `
@@ -55,6 +60,11 @@ const StyledLogo = styled(LogoWithText)`
   ${props => props.theme.media.phone} {
     height: 1.75rem;
   }
+`
+const LogoLinkWrapper = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export default TopBar
