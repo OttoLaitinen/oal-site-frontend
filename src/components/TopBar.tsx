@@ -9,12 +9,11 @@ const TopBar: React.FC = () => {
   return (
     <TopBarBackground>
       <Header>
-        <TopBarNav>
-          <LogoLinkWrapper to="/">
-            <StyledLogo />
-          </LogoLinkWrapper>
-          <LinkList />
-        </TopBarNav>
+        <LogoLinkWrapper to="/">
+          <StyledLogo />
+        </LogoLinkWrapper>
+
+        <LinkList />
       </Header>
     </TopBarBackground>
   )
@@ -44,13 +43,9 @@ const Header = styled.header`
   ${props => props.theme.media.phone} {
     padding-inline: ${props => props.theme.spacing.regular};
   }
-`
 
-const TopBarNav = styled.nav`
   display: flex;
-  margin: 0 auto;
-  width: 100%;
-  gap: ${props => props.theme.spacing.veryLarge};
+  gap: ${props => props.theme.spacing.large};
   justify-content: flex-start;
   align-items: center;
 `
