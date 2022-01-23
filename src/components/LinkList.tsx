@@ -119,12 +119,12 @@ const MenuButton = styled.button`
 `
 
 const StyledMenuIcon = styled(MenuIcon)`
-  height: 1.5rem;
+  height: 2rem;
   color: ${props => props.theme.color.black};
 `
 
 const StyledCrossIcon = styled(CrossIcon)`
-  height: 1.5rem;
+  height: 2rem;
   color: ${props => props.theme.color.black};
 `
 
