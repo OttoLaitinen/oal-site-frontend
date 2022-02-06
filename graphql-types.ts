@@ -298,8 +298,13 @@ export type SitePage = Node & {
   children: Array<Node>;
   internal: Internal;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
+  context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContext = {
+  id?: Maybe<Scalars['String']>;
 };
 
 export type ImageFormat =
@@ -723,11 +728,13 @@ export type StrapiPhotograph = Node & {
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
+  title?: Maybe<Scalars['String']>;
   photoTaken?: Maybe<Scalars['Date']>;
   seo?: Maybe<StrapiPhotographSeo>;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
   image?: Maybe<StrapiPhotographImage>;
+  slug?: Maybe<Scalars['String']>;
   strapiId?: Maybe<Scalars['String']>;
 };
 
@@ -1517,6 +1524,7 @@ export type QuerySitePageArgs = {
   children?: InputMaybe<NodeFilterListInput>;
   internal?: InputMaybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: InputMaybe<BooleanQueryOperatorInput>;
+  context?: InputMaybe<SitePageContextFilterInput>;
   pluginCreator?: InputMaybe<SitePluginFilterInput>;
   pluginCreatorId?: InputMaybe<StringQueryOperatorInput>;
 };
@@ -1580,11 +1588,13 @@ export type QueryStrapiPhotographArgs = {
   parent?: InputMaybe<NodeFilterInput>;
   children?: InputMaybe<NodeFilterListInput>;
   internal?: InputMaybe<InternalFilterInput>;
+  title?: InputMaybe<StringQueryOperatorInput>;
   photoTaken?: InputMaybe<DateQueryOperatorInput>;
   seo?: InputMaybe<StrapiPhotographSeoFilterInput>;
   createdAt?: InputMaybe<DateQueryOperatorInput>;
   updatedAt?: InputMaybe<DateQueryOperatorInput>;
   image?: InputMaybe<StrapiPhotographImageFilterInput>;
+  slug?: InputMaybe<StringQueryOperatorInput>;
   strapiId?: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -2772,6 +2782,10 @@ export type SiteFunctionSortInput = {
   order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
+export type SitePageContextFilterInput = {
+  id?: InputMaybe<StringQueryOperatorInput>;
+};
+
 export type SitePluginFilterInput = {
   id?: InputMaybe<StringQueryOperatorInput>;
   parent?: InputMaybe<NodeFilterInput>;
@@ -3017,6 +3031,7 @@ export type SitePageFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
+  | 'context___id'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
@@ -3131,6 +3146,7 @@ export type SitePageFilterInput = {
   children?: InputMaybe<NodeFilterListInput>;
   internal?: InputMaybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: InputMaybe<BooleanQueryOperatorInput>;
+  context?: InputMaybe<SitePageContextFilterInput>;
   pluginCreator?: InputMaybe<SitePluginFilterInput>;
   pluginCreatorId?: InputMaybe<StringQueryOperatorInput>;
 };
@@ -3896,6 +3912,7 @@ export type StrapiPhotographFieldsEnum =
   | 'internal___mediaType'
   | 'internal___owner'
   | 'internal___type'
+  | 'title'
   | 'photoTaken'
   | 'seo___title'
   | 'seo___id'
@@ -4006,6 +4023,7 @@ export type StrapiPhotographFieldsEnum =
   | 'image___localFile___internal___mediaType'
   | 'image___localFile___internal___owner'
   | 'image___localFile___internal___type'
+  | 'slug'
   | 'strapiId';
 
 export type StrapiPhotographGroupConnection = {
@@ -4022,11 +4040,13 @@ export type StrapiPhotographFilterInput = {
   parent?: InputMaybe<NodeFilterInput>;
   children?: InputMaybe<NodeFilterListInput>;
   internal?: InputMaybe<InternalFilterInput>;
+  title?: InputMaybe<StringQueryOperatorInput>;
   photoTaken?: InputMaybe<DateQueryOperatorInput>;
   seo?: InputMaybe<StrapiPhotographSeoFilterInput>;
   createdAt?: InputMaybe<DateQueryOperatorInput>;
   updatedAt?: InputMaybe<DateQueryOperatorInput>;
   image?: InputMaybe<StrapiPhotographImageFilterInput>;
+  slug?: InputMaybe<StringQueryOperatorInput>;
   strapiId?: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -5208,7 +5228,14 @@ export type IndexPageQuery = { strapiHome?: { title?: string | null | undefined,
 export type PhotographyPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PhotographyPageQuery = { strapiPhotography?: { title?: string | null | undefined, headerText?: string | null | undefined, headerPicture?: { photoCredit?: string | null | undefined, headerPhoto?: { alternativeText?: string | null | undefined, localFile?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined } | null | undefined, seo?: { title?: string | null | undefined, description?: string | null | undefined } | null | undefined } | null | undefined, allStrapiPhotograph: { edges: Array<{ node: { id: string, photoTaken?: any | null | undefined, seo?: { title?: string | null | undefined } | null | undefined, image?: { localFile?: { childImageSharp?: { gatsbyImageData: any, fluid?: { aspectRatio: number } | null | undefined } | null | undefined } | null | undefined } | null | undefined } }> } };
+export type PhotographyPageQuery = { strapiPhotography?: { title?: string | null | undefined, headerText?: string | null | undefined, headerPicture?: { photoCredit?: string | null | undefined, headerPhoto?: { alternativeText?: string | null | undefined, localFile?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined } | null | undefined, seo?: { title?: string | null | undefined, description?: string | null | undefined } | null | undefined } | null | undefined, allStrapiPhotograph: { edges: Array<{ node: { id: string, photoTaken?: any | null | undefined, title?: string | null | undefined, slug?: string | null | undefined, seo?: { title?: string | null | undefined } | null | undefined, image?: { localFile?: { childImageSharp?: { gatsbyImageData: any, fluid?: { aspectRatio: number } | null | undefined } | null | undefined } | null | undefined } | null | undefined } }> } };
+
+export type SinglePhotographQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type SinglePhotographQuery = { strapiPhotograph?: { id: string, photoTaken?: any | null | undefined, seo?: { title?: string | null | undefined, id?: string | null | undefined } | null | undefined, image?: { alternativeText?: string | null | undefined, caption?: string | null | undefined, localFile?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined } | null | undefined };
 
 export type GatsbyImageSharpFixedFragment = { base64?: string | null | undefined, width: number, height: number, src: string, srcSet: string };
 

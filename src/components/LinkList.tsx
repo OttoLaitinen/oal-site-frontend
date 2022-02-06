@@ -50,6 +50,7 @@ const TopBarLink: React.FC<TopBarLinkProps> = ({ to, setOpen, children }) => {
         backgroundColor: theme.color.primary,
         color: theme.color.white,
       }}
+      partiallyActive={to !== "/"}
       onClick={() => setOpen(false)}
     >
       {children}
@@ -99,6 +100,10 @@ const StyledLink = styled(Link)`
   font-family: "Quicksand";
   font-size: 1rem;
   font-weight: 700;
+
+  ${props => props.theme.media.phone} {
+    font-size: 1.125rem;
+  }
 
   :hover {
     background-color: ${props => props.theme.color.primaryLight};

@@ -10,6 +10,7 @@ import { ContentFlex } from "../components/layout"
 import Gallery from "../components/Gallery"
 import useWindowSize from "../hooks/useWindowSize"
 import { useTheme } from "@emotion/react"
+import { GALLERY_IMAGE_MAX_WIDTH } from "../components/Gallery"
 
 const PhotographyPage: React.FC<PageProps<PhotographyPageQuery>> = props => {
   const { data } = props
@@ -25,6 +26,8 @@ const PhotographyPage: React.FC<PageProps<PhotographyPageQuery>> = props => {
 
   const allImages = data.allStrapiPhotograph?.edges.map(i => ({
     id: i.node.id,
+    title: i.node.title,
+    slug: i.node.slug,
     imageData: getImage(
       i.node.image?.localFile?.childImageSharp?.gatsbyImageData
     ),
@@ -157,6 +160,8 @@ export const pageQuery = graphql`
         node {
           id
           photoTaken
+          title
+          slug
           seo {
             title
           }

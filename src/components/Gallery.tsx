@@ -2,6 +2,9 @@ import React from "react"
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 import { chunk, sum } from "lodash"
 import styled from "@emotion/styled"
+import { Link, navigate } from "gatsby"
+
+export const GALLERY_IMAGE_MAX_WIDTH = 750
 
 interface GalleryImage {
   id: string
@@ -9,6 +12,7 @@ interface GalleryImage {
   imageData: IGatsbyImageData | undefined
   title?: string
   caption?: string
+  slug: string
 }
 
 interface GalleryProps {
@@ -36,6 +40,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, itemsPerRow = 3 }) => {
                 aR={image.aspectRatio}
                 totalAR={rowAspectRatioSum}
                 gapAmount={row.length - 1}
+                to={`/photography/${image.slug}`}
               >
                 {image.imageData && (
                   <PhotoInGrid
@@ -72,11 +77,14 @@ type ImageWrapperProps = {
   gapAmount: number
 }
 
-const PhotoWrapper = styled.div<ImageWrapperProps>`
-  width: calc(
-    100% * ${props => props.aR / props.totalAR} -
-      ${props => props.gapAmount * (props.aR / props.totalAR)} *
-      ${props => props.theme.spacing.small}
+const PhotoWrapper = styled(Link)<ImageWrapperProps>`
+  width: min(
+    ${GALLERY_IMAGE_MAX_WIDTH}px,
+    calc(
+      100% * ${props => props.aR / props.totalAR} -
+        ${props => props.gapAmount * (props.aR / props.totalAR)} *
+        ${props => props.theme.spacing.small}
+    )
   );
 `
 
