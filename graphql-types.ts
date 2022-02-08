@@ -305,6 +305,8 @@ export type SitePage = Node & {
 
 export type SitePageContext = {
   id?: Maybe<Scalars['String']>;
+  previousId?: Maybe<Scalars['String']>;
+  nextId?: Maybe<Scalars['String']>;
 };
 
 export type ImageFormat =
@@ -2784,6 +2786,8 @@ export type SiteFunctionSortInput = {
 
 export type SitePageContextFilterInput = {
   id?: InputMaybe<StringQueryOperatorInput>;
+  previousId?: InputMaybe<StringQueryOperatorInput>;
+  nextId?: InputMaybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginFilterInput = {
@@ -3032,6 +3036,8 @@ export type SitePageFieldsEnum =
   | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
   | 'context___id'
+  | 'context___previousId'
+  | 'context___nextId'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
@@ -5232,10 +5238,12 @@ export type PhotographyPageQuery = { strapiPhotography?: { title?: string | null
 
 export type SinglePhotographQueryVariables = Exact<{
   id: Scalars['String'];
+  previousId?: InputMaybe<Scalars['String']>;
+  nextId?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type SinglePhotographQuery = { strapiPhotograph?: { id: string, photoTaken?: any | null | undefined, seo?: { title?: string | null | undefined, id?: string | null | undefined } | null | undefined, image?: { alternativeText?: string | null | undefined, caption?: string | null | undefined, localFile?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined } | null | undefined };
+export type SinglePhotographQuery = { current?: { id: string, title?: string | null | undefined, photoTaken?: any | null | undefined, seo?: { title?: string | null | undefined, id?: string | null | undefined } | null | undefined, image?: { alternativeText?: string | null | undefined, caption?: string | null | undefined, localFile?: { childImageSharp?: { gatsbyImageData: any, fluid?: { aspectRatio: number } | null | undefined } | null | undefined } | null | undefined } | null | undefined } | null | undefined, previous?: { id: string, slug?: string | null | undefined } | null | undefined, next?: { id: string, slug?: string | null | undefined } | null | undefined };
 
 export type GatsbyImageSharpFixedFragment = { base64?: string | null | undefined, width: number, height: number, src: string, srcSet: string };
 

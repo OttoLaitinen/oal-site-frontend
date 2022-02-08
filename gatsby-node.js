@@ -11,6 +11,12 @@ exports.createPages = async function ({ actions, graphql }) {
             title
             slug
           }
+          next {
+            id
+          }
+          previous {
+            id
+          }
         }
       }
     }
@@ -19,12 +25,16 @@ exports.createPages = async function ({ actions, graphql }) {
       return Promise.reject(errors)
     }
     const { edges } = data.allStrapiPhotograph
-    edges.forEach(({ node }) => {
+    edges.forEach(edge => {
       createPage({
-        path: `/photography/${node.slug}`,
+        path: `/photography/${edge.node.slug}`,
         component: path.resolve(`./src/templates/photograph.tsx`),
         context: {
-          id: node.id,
+          id: edge.node.id,
+          previousId: edge.previous
+            ? edge.previous.id
+            : edges[edges.length - 1].node.id,
+          nextId: edge.next ? edge.next.id : edges[0].node.id,
         },
       })
     })

@@ -62,12 +62,16 @@ const theme = {
     title3: css`
       font-family: "Quicksand";
       font-size: 1.5rem;
-      font-weight: 700;
+      font-weight: 500;
+
+      ${media.phone} {
+        font-size: 1.25rem;
+      }
     `,
     subtitle: css`
       font-family: "Quicksand";
-      font-size: 1.25rem;
-      font-weight: 700;
+      font-size: 1.125rem;
+      font-weight: 500;
     `,
     body: css`
       font-family: "Karla";

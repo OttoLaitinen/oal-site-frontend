@@ -26,8 +26,8 @@ const PhotographyPage: React.FC<PageProps<PhotographyPageQuery>> = props => {
 
   const allImages = data.allStrapiPhotograph?.edges.map(i => ({
     id: i.node.id,
-    title: i.node.title,
-    slug: i.node.slug,
+    title: i.node.title || undefined,
+    slug: i.node.slug || "",
     imageData: getImage(
       i.node.image?.localFile?.childImageSharp?.gatsbyImageData
     ),
