@@ -35,18 +35,14 @@ const PhotographyPage: React.FC<PageProps<PhotographyPageQuery>> = props => {
       i.node.image?.localFile?.childImageSharp?.fluid?.aspectRatio || 0,
   }))
 
-  const phold = `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-     Et ab repellat voluptates dolores, accusamus numquam doloribus possimus 
-     nihil omnis molestiae ullam libero alias deserunt corrupti cupiditate dolore officiis recusandae repellendus.`
-
   return (
     <>
       <Seo />
       <ContentFlex>
         <HeaderSection>
           <HeaderSectionTitleColumn>
-            <h1>Yes, I do photos too!</h1>
-            <StyledMarkdown content={phold} />
+            <h1>{data.strapiPhotography?.title}</h1>
+            <StyledMarkdown content={data.strapiPhotography?.headerText} />
           </HeaderSectionTitleColumn>
 
           {headerPicture && (
