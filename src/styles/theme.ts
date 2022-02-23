@@ -39,6 +39,7 @@ const theme = {
     primaryLightest: "#FAFBFF",
     white: "white",
     black: "black",
+    link: "#223c99"
   },
   fonts: {
     regular: "Karla",
@@ -114,6 +115,12 @@ export const GlobalStyle = css`
   *, *:before, *:after {
     box-sizing: border-box;
   }
+
+  ::selection {
+    background: ${theme.color.primaryLight};
+    color: ${theme.color.black};
+  }
+
   html {
     box-sizing: border-box;
     scroll-behavior: smooth;

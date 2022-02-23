@@ -77,7 +77,9 @@ type ImageWrapperProps = {
   gapAmount: number
 }
 
-const PhotoWrapper = styled(Link)<ImageWrapperProps>`
+const PhotoWrapper = styled(Link, {
+  shouldForwardProp: p => p !== "aR" && p !== "totalAR" && p !== "gapAmount",
+})<ImageWrapperProps>`
   width: min(
     ${GALLERY_IMAGE_MAX_WIDTH}px,
     calc(

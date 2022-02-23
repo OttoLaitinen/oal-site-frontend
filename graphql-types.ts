@@ -722,7 +722,124 @@ export type StrapiPhotographyHeaderPictureHeaderPhotoFormatsSmallProvider_Metada
 export type StrapiPhotographySeo = {
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
+  shareImage?: Maybe<StrapiPhotographySeoShareImage>;
   id?: Maybe<Scalars['String']>;
+};
+
+export type StrapiPhotographySeoShareImage = {
+  name?: Maybe<Scalars['String']>;
+  alternativeText?: Maybe<Scalars['String']>;
+  caption?: Maybe<Scalars['String']>;
+  hash?: Maybe<Scalars['String']>;
+  ext?: Maybe<Scalars['String']>;
+  mime?: Maybe<Scalars['String']>;
+  size?: Maybe<Scalars['Float']>;
+  width?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['Int']>;
+  url?: Maybe<Scalars['String']>;
+  provider_metadata?: Maybe<StrapiPhotographySeoShareImageProvider_Metadata>;
+  formats?: Maybe<StrapiPhotographySeoShareImageFormats>;
+  provider?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  id?: Maybe<Scalars['String']>;
+  localFile?: Maybe<File>;
+};
+
+
+export type StrapiPhotographySeoShareImageCreatedAtArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type StrapiPhotographySeoShareImageUpdatedAtArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type StrapiPhotographySeoShareImageProvider_Metadata = {
+  public_id?: Maybe<Scalars['String']>;
+  resource_type?: Maybe<Scalars['String']>;
+};
+
+export type StrapiPhotographySeoShareImageFormats = {
+  thumbnail?: Maybe<StrapiPhotographySeoShareImageFormatsThumbnail>;
+  large?: Maybe<StrapiPhotographySeoShareImageFormatsLarge>;
+  medium?: Maybe<StrapiPhotographySeoShareImageFormatsMedium>;
+  small?: Maybe<StrapiPhotographySeoShareImageFormatsSmall>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsThumbnail = {
+  name?: Maybe<Scalars['String']>;
+  hash?: Maybe<Scalars['String']>;
+  ext?: Maybe<Scalars['String']>;
+  mime?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['Int']>;
+  size?: Maybe<Scalars['Float']>;
+  url?: Maybe<Scalars['String']>;
+  provider_metadata?: Maybe<StrapiPhotographySeoShareImageFormatsThumbnailProvider_Metadata>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsThumbnailProvider_Metadata = {
+  public_id?: Maybe<Scalars['String']>;
+  resource_type?: Maybe<Scalars['String']>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsLarge = {
+  name?: Maybe<Scalars['String']>;
+  hash?: Maybe<Scalars['String']>;
+  ext?: Maybe<Scalars['String']>;
+  mime?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['Int']>;
+  size?: Maybe<Scalars['Float']>;
+  url?: Maybe<Scalars['String']>;
+  provider_metadata?: Maybe<StrapiPhotographySeoShareImageFormatsLargeProvider_Metadata>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsLargeProvider_Metadata = {
+  public_id?: Maybe<Scalars['String']>;
+  resource_type?: Maybe<Scalars['String']>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsMedium = {
+  name?: Maybe<Scalars['String']>;
+  hash?: Maybe<Scalars['String']>;
+  ext?: Maybe<Scalars['String']>;
+  mime?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['Int']>;
+  size?: Maybe<Scalars['Float']>;
+  url?: Maybe<Scalars['String']>;
+  provider_metadata?: Maybe<StrapiPhotographySeoShareImageFormatsMediumProvider_Metadata>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsMediumProvider_Metadata = {
+  public_id?: Maybe<Scalars['String']>;
+  resource_type?: Maybe<Scalars['String']>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsSmall = {
+  name?: Maybe<Scalars['String']>;
+  hash?: Maybe<Scalars['String']>;
+  ext?: Maybe<Scalars['String']>;
+  mime?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['Int']>;
+  size?: Maybe<Scalars['Float']>;
+  url?: Maybe<Scalars['String']>;
+  provider_metadata?: Maybe<StrapiPhotographySeoShareImageFormatsSmallProvider_Metadata>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsSmallProvider_Metadata = {
+  public_id?: Maybe<Scalars['String']>;
+  resource_type?: Maybe<Scalars['String']>;
 };
 
 export type StrapiPhotograph = Node & {
@@ -3450,7 +3567,108 @@ export type StrapiPhotographyHeaderPictureHeaderPhotoFormatsSmallProvider_Metada
 export type StrapiPhotographySeoFilterInput = {
   title?: InputMaybe<StringQueryOperatorInput>;
   description?: InputMaybe<StringQueryOperatorInput>;
+  shareImage?: InputMaybe<StrapiPhotographySeoShareImageFilterInput>;
   id?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type StrapiPhotographySeoShareImageFilterInput = {
+  name?: InputMaybe<StringQueryOperatorInput>;
+  alternativeText?: InputMaybe<StringQueryOperatorInput>;
+  caption?: InputMaybe<StringQueryOperatorInput>;
+  hash?: InputMaybe<StringQueryOperatorInput>;
+  ext?: InputMaybe<StringQueryOperatorInput>;
+  mime?: InputMaybe<StringQueryOperatorInput>;
+  size?: InputMaybe<FloatQueryOperatorInput>;
+  width?: InputMaybe<IntQueryOperatorInput>;
+  height?: InputMaybe<IntQueryOperatorInput>;
+  url?: InputMaybe<StringQueryOperatorInput>;
+  provider_metadata?: InputMaybe<StrapiPhotographySeoShareImageProvider_MetadataFilterInput>;
+  formats?: InputMaybe<StrapiPhotographySeoShareImageFormatsFilterInput>;
+  provider?: InputMaybe<StringQueryOperatorInput>;
+  createdAt?: InputMaybe<DateQueryOperatorInput>;
+  updatedAt?: InputMaybe<DateQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  localFile?: InputMaybe<FileFilterInput>;
+};
+
+export type StrapiPhotographySeoShareImageProvider_MetadataFilterInput = {
+  public_id?: InputMaybe<StringQueryOperatorInput>;
+  resource_type?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsFilterInput = {
+  thumbnail?: InputMaybe<StrapiPhotographySeoShareImageFormatsThumbnailFilterInput>;
+  large?: InputMaybe<StrapiPhotographySeoShareImageFormatsLargeFilterInput>;
+  medium?: InputMaybe<StrapiPhotographySeoShareImageFormatsMediumFilterInput>;
+  small?: InputMaybe<StrapiPhotographySeoShareImageFormatsSmallFilterInput>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsThumbnailFilterInput = {
+  name?: InputMaybe<StringQueryOperatorInput>;
+  hash?: InputMaybe<StringQueryOperatorInput>;
+  ext?: InputMaybe<StringQueryOperatorInput>;
+  mime?: InputMaybe<StringQueryOperatorInput>;
+  width?: InputMaybe<IntQueryOperatorInput>;
+  height?: InputMaybe<IntQueryOperatorInput>;
+  size?: InputMaybe<FloatQueryOperatorInput>;
+  url?: InputMaybe<StringQueryOperatorInput>;
+  provider_metadata?: InputMaybe<StrapiPhotographySeoShareImageFormatsThumbnailProvider_MetadataFilterInput>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsThumbnailProvider_MetadataFilterInput = {
+  public_id?: InputMaybe<StringQueryOperatorInput>;
+  resource_type?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsLargeFilterInput = {
+  name?: InputMaybe<StringQueryOperatorInput>;
+  hash?: InputMaybe<StringQueryOperatorInput>;
+  ext?: InputMaybe<StringQueryOperatorInput>;
+  mime?: InputMaybe<StringQueryOperatorInput>;
+  width?: InputMaybe<IntQueryOperatorInput>;
+  height?: InputMaybe<IntQueryOperatorInput>;
+  size?: InputMaybe<FloatQueryOperatorInput>;
+  url?: InputMaybe<StringQueryOperatorInput>;
+  provider_metadata?: InputMaybe<StrapiPhotographySeoShareImageFormatsLargeProvider_MetadataFilterInput>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsLargeProvider_MetadataFilterInput = {
+  public_id?: InputMaybe<StringQueryOperatorInput>;
+  resource_type?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsMediumFilterInput = {
+  name?: InputMaybe<StringQueryOperatorInput>;
+  hash?: InputMaybe<StringQueryOperatorInput>;
+  ext?: InputMaybe<StringQueryOperatorInput>;
+  mime?: InputMaybe<StringQueryOperatorInput>;
+  width?: InputMaybe<IntQueryOperatorInput>;
+  height?: InputMaybe<IntQueryOperatorInput>;
+  size?: InputMaybe<FloatQueryOperatorInput>;
+  url?: InputMaybe<StringQueryOperatorInput>;
+  provider_metadata?: InputMaybe<StrapiPhotographySeoShareImageFormatsMediumProvider_MetadataFilterInput>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsMediumProvider_MetadataFilterInput = {
+  public_id?: InputMaybe<StringQueryOperatorInput>;
+  resource_type?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsSmallFilterInput = {
+  name?: InputMaybe<StringQueryOperatorInput>;
+  hash?: InputMaybe<StringQueryOperatorInput>;
+  ext?: InputMaybe<StringQueryOperatorInput>;
+  mime?: InputMaybe<StringQueryOperatorInput>;
+  width?: InputMaybe<IntQueryOperatorInput>;
+  height?: InputMaybe<IntQueryOperatorInput>;
+  size?: InputMaybe<FloatQueryOperatorInput>;
+  url?: InputMaybe<StringQueryOperatorInput>;
+  provider_metadata?: InputMaybe<StrapiPhotographySeoShareImageFormatsSmallProvider_MetadataFilterInput>;
+};
+
+export type StrapiPhotographySeoShareImageFormatsSmallProvider_MetadataFilterInput = {
+  public_id?: InputMaybe<StringQueryOperatorInput>;
+  resource_type?: InputMaybe<StringQueryOperatorInput>;
 };
 
 export type StrapiPhotographyConnection = {
@@ -3645,6 +3863,60 @@ export type StrapiPhotographyFieldsEnum =
   | 'headerPicture___id'
   | 'seo___title'
   | 'seo___description'
+  | 'seo___shareImage___name'
+  | 'seo___shareImage___alternativeText'
+  | 'seo___shareImage___caption'
+  | 'seo___shareImage___hash'
+  | 'seo___shareImage___ext'
+  | 'seo___shareImage___mime'
+  | 'seo___shareImage___size'
+  | 'seo___shareImage___width'
+  | 'seo___shareImage___height'
+  | 'seo___shareImage___url'
+  | 'seo___shareImage___provider_metadata___public_id'
+  | 'seo___shareImage___provider_metadata___resource_type'
+  | 'seo___shareImage___provider'
+  | 'seo___shareImage___createdAt'
+  | 'seo___shareImage___updatedAt'
+  | 'seo___shareImage___id'
+  | 'seo___shareImage___localFile___sourceInstanceName'
+  | 'seo___shareImage___localFile___absolutePath'
+  | 'seo___shareImage___localFile___relativePath'
+  | 'seo___shareImage___localFile___extension'
+  | 'seo___shareImage___localFile___size'
+  | 'seo___shareImage___localFile___prettySize'
+  | 'seo___shareImage___localFile___modifiedTime'
+  | 'seo___shareImage___localFile___accessTime'
+  | 'seo___shareImage___localFile___changeTime'
+  | 'seo___shareImage___localFile___birthTime'
+  | 'seo___shareImage___localFile___root'
+  | 'seo___shareImage___localFile___dir'
+  | 'seo___shareImage___localFile___base'
+  | 'seo___shareImage___localFile___ext'
+  | 'seo___shareImage___localFile___name'
+  | 'seo___shareImage___localFile___relativeDirectory'
+  | 'seo___shareImage___localFile___dev'
+  | 'seo___shareImage___localFile___mode'
+  | 'seo___shareImage___localFile___nlink'
+  | 'seo___shareImage___localFile___uid'
+  | 'seo___shareImage___localFile___gid'
+  | 'seo___shareImage___localFile___rdev'
+  | 'seo___shareImage___localFile___ino'
+  | 'seo___shareImage___localFile___atimeMs'
+  | 'seo___shareImage___localFile___mtimeMs'
+  | 'seo___shareImage___localFile___ctimeMs'
+  | 'seo___shareImage___localFile___atime'
+  | 'seo___shareImage___localFile___mtime'
+  | 'seo___shareImage___localFile___ctime'
+  | 'seo___shareImage___localFile___birthtime'
+  | 'seo___shareImage___localFile___birthtimeMs'
+  | 'seo___shareImage___localFile___blksize'
+  | 'seo___shareImage___localFile___blocks'
+  | 'seo___shareImage___localFile___url'
+  | 'seo___shareImage___localFile___publicURL'
+  | 'seo___shareImage___localFile___childrenImageSharp'
+  | 'seo___shareImage___localFile___id'
+  | 'seo___shareImage___localFile___children'
   | 'seo___id'
   | 'createdAt'
   | 'updatedAt'
